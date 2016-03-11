@@ -1,0 +1,16 @@
+golang:
+    build: ./docker/golang
+    volumes:
+     - ".:go"
+    expose:
+     - "8000"
+
+nginx:
+    build: ./docker/nginx
+    links:
+     - golang
+    ports:
+     - "80:80"
+
+mongo:
+    image: mongo
